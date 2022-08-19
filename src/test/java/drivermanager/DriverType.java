@@ -4,5 +4,6 @@ public enum DriverType {
 
     CHROME,
     FIREFOX,
-    REMOTE
+    REMOTE,
+    EDGE
 }
