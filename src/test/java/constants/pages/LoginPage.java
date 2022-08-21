@@ -1,11 +1,11 @@
-package pages;
+package constants.pages;
 
 import constants.Credentials;
 import constants.Urls;
+import io.qameta.allure.Step;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import tests.CreateAccountTest;
 
 public class LoginPage extends BasePage {
     private static final Logger LOGGER=Logger.getLogger(LoginPage.class.getName());
@@ -16,6 +16,7 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+    @Step("Opening salesforce portal, entering username, password, click Login")
     public void loginToSale(){
         LOGGER.debug(String.format("Attempt to open url %s", Urls.SALES_FORCE_LOGIN));
        driver.get(Urls.SALES_FORCE_LOGIN);

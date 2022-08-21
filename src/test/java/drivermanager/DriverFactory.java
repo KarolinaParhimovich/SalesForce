@@ -1,5 +1,8 @@
 package drivermanager;
 
+import io.github.bonigarcia.wdm.EdgeDriverManager;
+import org.openqa.selenium.edge.EdgeDriver;
+
 public class DriverFactory {
 
     public DriverManager getManager(DriverType driverType) {

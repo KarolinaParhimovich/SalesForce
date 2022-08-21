@@ -1,16 +1,17 @@
 package tests;
-
+import io.qameta.allure.Description;
 import modals.NewAccountModel;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AccountsPage;
-import pages.LoginPage;
+import constants.pages.AccountsPage;
+import constants.pages.LoginPage;
 import testdata.PrepareNewAccountData;
 
 public class CreateAccountTest extends BaseTest{
     private static final Logger LOGGER=Logger.getLogger(CreateAccountTest.class.getName());
     @Test
+    @Description("Creating new account and checking of new name ")
     public void createAccountTest(){
         LoginPage loginPage=new LoginPage(driver);
         LOGGER.info(String.format("Page %s initialized", LoginPage.class.getName()));
