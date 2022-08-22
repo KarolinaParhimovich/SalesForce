@@ -1,12 +1,12 @@
-package pages;
+package constants.pages;
 
 import elements.DropDawnList;
 import elements.TextInput;
 import elements.Textarea;
+import io.qameta.allure.Step;
 import modals.NewAccountModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class NewAccountPage extends BasePage {
     private By SAVE_BUTTON = By.xpath("//div[contains(@class, 'modal-body')]//button[@title='Save']");
@@ -15,7 +15,7 @@ public class NewAccountPage extends BasePage {
     public NewAccountPage(WebDriver driver) {
         super(driver);
     }
-
+@Step("Filling up data of new user with 'builder'")
     public void fillInAccountForm(NewAccountModel newAccount) {
         driver.findElement(ACCOUNT_NANE_INPUT).sendKeys(newAccount.getAccountName());
         new TextInput(driver, "Phone").inputText(newAccount.getPhone());

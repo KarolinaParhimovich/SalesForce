@@ -18,6 +18,8 @@
         <junit-jupiter-api.version>5.9.0</junit-jupiter-api.version>
         <suiteXmlFile>src/test/resources/tetsuites/Suite.xml</suiteXmlFile>
         <log4J.version>1.2.17</log4J.version>
+        <allure-testnj.version>2.19.0</allure-testnj.version>
+        <aspectj.version>1.9.7</aspectj.version>
 
     </properties>
     <dependencies>
@@ -62,21 +64,48 @@
             <artifactId>log4j</artifactId>
             <version>${log4J.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testnj.version}</version>
+        </dependency>
 
     </dependencies>
     <build>
-    <plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M4</version>
-        <configuration>
-            <suiteXmlFiles>
-                <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-            </suiteXmlFiles>
-        </configuration>
-    </plugin>
-    </plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+        </plugins>
     </build>
 
 </project>
